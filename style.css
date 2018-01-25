@@ -52,9 +52,11 @@ footer .footer {
 #main {
     width: 800px;
     margin: auto;
-    min-height: 460px;
-    padding-bottom: 50px;
+    min-height: 400px;
     background-color: #ccc;
+}
+#page-content {
+    padding-bottom: 50px;
 }
 #banner {
     min-height: 50px;
