@@ -1,6 +1,60 @@
 //
 // this is just a stub for a function you need to implement
 //
+function getChars() {
+    return {
+
+    };
+}
+
+function getWords() {
+    return {
+
+    };
+}
+
+function getLines() {
+    return {
+
+    };
+}
+
+function getNonEmptyLines() {
+    return {
+
+    };
+}
+
+function getAverageWordLength() {
+    return {
+
+    };
+}
+
+function getMaxLineLength() {
+    return {
+
+    };
+}
+
+function getPalindromes() {
+    return {
+
+    };
+}
+
+function getLongestWords() {
+    return {
+
+    };
+}
+
+function getMostFrequentWords() {
+    return {
+
+    };
+}
+
 function getStats(txt) {
     return {
         nChars: 123,
