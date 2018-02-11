@@ -18,9 +18,15 @@ function parse(txt) {
 }
 
 function getChars(txt) {
-    return {
-
-    };
+    var count = 0;
+    for (var i = 0; i < txt.length; i++) {
+        var z = txt[i].split("");
+        z.forEach(function(){
+            count++;
+        });
+    }
+    console.log("Character count: " + count);
+    return count;
 }
 
 function getWords(txt) {
@@ -33,55 +39,47 @@ function getWords(txt) {
 }
 
 function getLines(txt) {
-    return {
-
-    };
+    return txt.split(/\r\n|\r|\n/).length;
 }
 
 function getNonEmptyLines(txt) {
-    return {
-
-    };
+    var count = 0;
+    var str = txt.split(/\r\n|\r|\n/);
+    for (var i = 0; i < str.length; i++) {
+        if (str[i] != "") {
+            count++;
+        }
+    }
+    return count;
 }
 
 function getAverageWordLength(txt) {
-    return {
-
-    };
+    return;
 }
 
 function getMaxLineLength(txt) {
-    return {
-
-    };
+    return;
 }
 
 function getPalindromes(txt) {
-    return {
-
-    };
+    return;
 }
 
 function getLongestWords(txt) {
-    return {
-
-    };
+    return;
 }
 
 function getMostFrequentWords(txt) {
-    return {
-
-    };
+    return;
 }
 
 function getStats(txt) {
-    var final = parse(txt);
-    getWords(final);
+    var parsedTxt = parse(txt);
     return {
-        nChars: 123,
-        nWords: 22,
-        nLines: 10,
-        nNonEmptyLines: 22,
+        nChars: getChars(parsedTxt),
+        nWords: getWords(parsedTxt),
+        nLines: getLines(txt),
+        nNonEmptyLines: getNonEmptyLines(txt),
         averageWordLength: 3.3,
         maxLineLength: 33,
         palindromes: ["12321", "kayak", "mom"],
