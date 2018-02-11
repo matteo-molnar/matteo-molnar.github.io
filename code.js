@@ -59,7 +59,18 @@ function getAverageWordLength(charCount, wordCount) {
 }
 
 function getPalindromes(txt) {
-    return;
+    var palindromes = [];
+    for (var i = 0; i < txt.length; i++) {
+        var word = txt[i].toLowerCase();
+        var strArray = word.split("");
+        strArray = strArray.reverse();
+        var str = strArray.join("");
+
+        if (word.length > 2 && word == str) {
+            palindromes.push(word);
+        }
+    }
+    return palindromes;
 }
 
 function getLongestWords(txt) {
@@ -80,7 +91,7 @@ function getStats(txt) {
         nNonEmptyLines: getNonEmptyLines(txt),
         maxLineLength: getMaxLineLength(txt),
         averageWordLength: getAverageWordLength(getChars(parsedTxt), wordCount),
-        palindromes: ["12321", "kayak", "mom"],
+        palindromes:     getPalindromes(parsedTxt),
         longestWords: ["xxxxxxxxx", "123444444"],
         mostFrequentWords: ["hello(7)", "world(1)"]
     };
