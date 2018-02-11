@@ -7,7 +7,7 @@ function getChars(txt) {
     var count = 0;
     for (var i = 0; i < txt.length; i++) {
         var z = txt[i].split("");
-        z.forEach(function(){
+        z.forEach(function() {
             count++;
         });
     }
@@ -37,10 +37,6 @@ function getNonEmptyLines(txt) {
     return count;
 }
 
-function getAverageWordLength(charCount, wordCount) {
-    return charCount/wordCount;
-}
-
 function getMaxLineLength(txt) {
     var maxCount = 0;
     var count = 0;
@@ -56,6 +52,10 @@ function getMaxLineLength(txt) {
         count = 0;
     }
     return maxCount;
+}
+
+function getAverageWordLength(charCount, wordCount) {
+    return charCount/wordCount;
 }
 
 function getPalindromes(txt) {
