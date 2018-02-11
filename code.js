@@ -1,17 +1,5 @@
 function parse(txt) {
-    //var strFinal = [];
-    //var str = txt.match(/[a-z]+|\d+/ig);
     var str = txt.match(/[a-z]+\d+|[a-z]+|\d+/ig);
-    // console.log(str);
-    // for (var i = 0; i < str.length; i++) {
-    //     var x = str[i].split(".");
-    //
-    //     for (var y = 0; y < x.length; y++) {
-    //         strFinal.push(x[y]);
-    //     }
-    // }
-    // console.log(strFinal);
-    //return strFinal;
     console.log(str);
     return str;
 }
