@@ -1,5 +1,4 @@
 function parse(txt) {
-    // will only split for spaces and periods, need to include everything that is not alphanumeric
     //var strFinal = [];
     //var str = txt.match(/[a-z]+|\d+/ig);
     var str = txt.match(/[a-z]+\d+|[a-z]+|\d+/ig);
@@ -58,7 +57,22 @@ function getAverageWordLength(txt) {
 }
 
 function getMaxLineLength(txt) {
-    return;
+    var maxCount = 0;
+    var count = 0;
+    var str = txt.split(/\r\n|\r|\n/);
+    console.log("MAX LINE LENGTH");
+    console.log(str);
+    for (var i = 0; i < str.length; i++) {
+        var x = str[i].split("");
+        x.forEach(function() {
+            count++
+        });
+        if (count > maxCount) {
+            maxCount = count;
+        }
+        count = 0;
+    }
+    return maxCount;
 }
 
 function getPalindromes(txt) {
@@ -76,12 +90,12 @@ function getMostFrequentWords(txt) {
 function getStats(txt) {
     var parsedTxt = parse(txt);
     return {
-        nChars: getChars(parsedTxt),
+        nChars: getChars(txt),
         nWords: getWords(parsedTxt),
         nLines: getLines(txt),
         nNonEmptyLines: getNonEmptyLines(txt),
+        maxLineLength: getMaxLineLength(txt),
         averageWordLength: 3.3,
-        maxLineLength: 33,
         palindromes: ["12321", "kayak", "mom"],
         longestWords: ["xxxxxxxxx", "123444444"],
         mostFrequentWords: ["hello(7)", "world(1)"]
