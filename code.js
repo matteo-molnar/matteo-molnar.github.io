@@ -76,7 +76,7 @@ function getPalindromes(txt) {
     return palindromes;
 }
 
-// https://stackoverflow.com/questions/1960473/get-all-unique-values-in-an-array-remove-duplicates
+// idea from https://stackoverflow.com/questions/1960473/get-all-unique-values-in-an-array-remove-duplicates
 function uniqueArray(givenArray) {
     function onlyUnique(value, index, self) {
         return self.indexOf(value) === index;
@@ -89,7 +89,7 @@ function uniqueArray(givenArray) {
 function getLongestWords(txt) {
     var words = txt;
 
-    // https://stackoverflow.com/questions/10630766/sort-an-array-based-on-the-length-of-each-element
+    // idea from https://stackoverflow.com/questions/10630766/sort-an-array-based-on-the-length-of-each-element
     words.sort(function(a, b){
         return b.length - a.length || a.localeCompare(b);
     });
