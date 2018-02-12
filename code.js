@@ -1,6 +1,5 @@
 function parse(txt) {
-    var str = txt.match(/[a-z]+\d+|[a-z]+|\d+/ig);
-    return str;
+    return txt.match(/[a-z]+\d+|[a-z]+|\d+/ig);
 }
 
 function getChars(txt) {
@@ -30,9 +29,8 @@ function getNonEmptyLines(txt) {
     var count = 0;
     var str = txt.split(/\r\n|\r|\n/);
     for (var i = 0; i < str.length; i++) {
-        if (str[i].trim() != "") {
+        if (str[i].trim() != "")
             count++;
-        }
     }
     return count;
 }
@@ -46,9 +44,8 @@ function getMaxLineLength(txt) {
         x.forEach(function() {
             count++
         });
-        if (count > maxCount) {
-            maxCount = count;
-        }
+        if (count > maxCount)
+            maxCount = count
         count = 0;
     }
     return maxCount;
@@ -66,19 +63,75 @@ function getPalindromes(txt) {
         strArray = strArray.reverse();
         var str = strArray.join("");
 
-        if (word.length > 2 && word == str) {
+        if (word.length > 2 && word == str)
             palindromes.push(word);
-        }
     }
     return palindromes;
 }
 
+// https://stackoverflow.com/questions/1960473/get-all-unique-values-in-an-array-remove-duplicates
+function uniqueArray(givenArray) {
+    function onlyUnique(value, index, self) {
+        return self.indexOf(value) === index;
+    }
+    var unique = givenArray.filter( onlyUnique );
+
+    return unique;
+}
+
 function getLongestWords(txt) {
-    return;
+    var words = txt;
+    // https://stackoverflow.com/questions/10630766/sort-an-array-based-on-the-length-of-each-element
+    words.sort(function(a, b){
+        return b.length - a.length || a.localeCompare(b);
+    });
+    var uniqueWords = uniqueArray(words);
+    var longestWords = [];
+    for (var i = 0; i < 10; i++) {
+        if (uniqueWords[i] != null)
+            longestWords.push(uniqueWords[i].toLowerCase());
+    }
+    return longestWords;
 }
 
 function getMostFrequentWords(txt) {
-    return;
+    var dictionary = {};
+    for (var i = 0; i < txt.length; i++) {
+        if (dictionary[txt[i]] == null)
+            dictionary[txt[i]] = 1;
+        else if (dictionary[txt[i]] != null)
+            dictionary[txt[i]]++;
+    }
+    var sortedDictionary = [];
+    for (key in dictionary) {
+        sortedDictionary.push([key, dictionary[key]]);
+    }
+    sortedDictionary.sort(function(a, b) {
+        var nameA = a[0].toUpperCase();
+        var nameB = b[0].toUpperCase();
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+        
+        return 0;
+    });
+    sortedDictionary.sort(function(a, b) {
+        return b[1] - a[1];
+    });
+    var formattedDictionary = [];
+    for (var x = 0; x < sortedDictionary.length; x++) {
+        var name = sortedDictionary[x][0] + "(" + sortedDictionary[x][1] + ")";
+        formattedDictionary.push(name);
+    }
+    var frequentWords = [];
+    for (var y = 0; y < 10; y++) {
+        if (formattedDictionary[y] != null)
+            frequentWords.push(formattedDictionary[y].toLowerCase());
+    }
+    return frequentWords;
 }
 
 function getStats(txt) {
@@ -91,9 +144,9 @@ function getStats(txt) {
         nNonEmptyLines: getNonEmptyLines(txt),
         maxLineLength: getMaxLineLength(txt),
         averageWordLength: getAverageWordLength(getChars(parsedTxt), wordCount),
-        palindromes:     getPalindromes(parsedTxt),
-        longestWords: ["xxxxxxxxx", "123444444"],
-        mostFrequentWords: ["hello(7)", "world(1)"]
+        palindromes: getPalindromes(parsedTxt),
+        longestWords: getLongestWords(parsedTxt),
+        mostFrequentWords: getMostFrequentWords(parsedTxt)
     };
 }
 
