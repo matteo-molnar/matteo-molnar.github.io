@@ -60,10 +60,6 @@ function getMaxLineLength(txt) {
     return maxCount;
 }
 
-function getAverageWordLength(charCount, wordCount) {
-    return charCount/wordCount;
-}
-
 function getPalindromes(txt) {
     var palindromes = [];
 
@@ -151,7 +147,7 @@ function getMostFrequentWords(txt) {
         if (formattedDictionary[y] != null)
             frequentWords.push(formattedDictionary[y].toLowerCase());
     }
-    
+
     return frequentWords;
 }
 
@@ -164,7 +160,7 @@ function getStats(txt) {
         nLines: getLines(txt),
         nNonEmptyLines: getNonEmptyLines(txt),
         maxLineLength: getMaxLineLength(txt),
-        averageWordLength: getAverageWordLength(getChars(parsedTxt), wordCount),
+        averageWordLength: getChars(parsedTxt)/wordCount,
         palindromes: getPalindromes(parsedTxt),
         longestWords: getLongestWords(parsedTxt),
         mostFrequentWords: getMostFrequentWords(parsedTxt)
